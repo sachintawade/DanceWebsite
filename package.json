@@ -1,0 +1,17 @@
+{
+  "name": "tawade-dance-academy",
+  "version": "1.0.0",
+  "description": "Online dance classes for every step in your dance journey. Learn from the world's best dancers any time, anywhere.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SachinTawade",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.25",
+    "pug": "^3.0.0"
+  }
+}

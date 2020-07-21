@@ -1,0 +1,107 @@
+// Inseting data in mongoDB
+
+> db
+test
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+eKart   0.000GB
+local   0.000GB
+
+> use eKart
+switched to db eKart
+
+> show collections
+text
+
+>db.text.insert({})
+>db.text.insert({})
+
+> db.text.find()
+{ "_id" : ObjectId("5f132f5578e69638b76b9a45") }
+{ "_id" : ObjectId("5f132fdf78e69638b76b9a46") }
+
+
+// InsertOne is for single row
+
+db.text.insertOne(
+    {
+        name: "Shaomi", 
+        price: 13000, 
+        rating: 4.5, 
+        qty: 5000,
+        sold: 1050
+    }
+
+
+//insertMany is for insert many rows
+
+db.text.insertMany([
+    {
+        name: "Shaomi", 
+        price: 13000, 
+        rating: 4.5, 
+        qty: 5000,
+        sold: 1050
+    },
+    {
+        name: "Oppo",
+        price: 20000,
+        rating: 4.0,
+        qty: 1000,
+        sold: 150
+    },
+    {   
+        name: "Vivo",
+        price: 25000,
+        rating: 3.5,
+        qty: 3000,
+        sold: 1500
+    }]);
+
+
+// Searching for data in mongoDB
+
+use eKart
+
+// This query will give you all the objects with name is equal to Sachin Tawade
+
+db.text.find({"name": "Sachin Tawade"})
+
+// And operator
+
+db.text.find({price: {$gte: 20000}, rating: {$gt:3.5}})
+
+// or operator
+
+db.text.find({$or: [{price: {$lte: 20000}}, {rating: {$gt: 3.0}}] })
+
+
+
+// Delete the row from the collections
+
+// deleteOne- delete the first row from the collections matching with the query
+
+db.items.deleteOne({name: "Shaomi"})
+
+// deleteMany- delete all the records from the collections matching with the query
+
+db.items.deleteMany({name: "Shaomi"})
+
+
+// Update the collections
+
+db
+show dbs
+use eKart
+show collections
+    text
+db.text.find()
+db.text.updateOne({name: "Sachin Tawade"},{$set: {empId: 456}})
+db.text.find()
+
+db.text.updateOne({name: "Sachin Tawade"},{$set: {empId: 456, mobile: 8698323890}})
+
+
+db.text.updateMany({name: "Shaomi"},{$set: {price: 5454, rating: 5}})
